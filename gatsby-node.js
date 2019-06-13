@@ -8,8 +8,11 @@ exports.onCreateWebpackConfig = ({ config, actions }) => {
       alias: {
         '@src': path.join(__dirname, './src'),
         '@components': path.join(__dirname, './src/components'),
-        '@lib': path.join(__dirname, './src/lib'),
         '@images': path.join(__dirname, './src/images'),
+        '@lib': path.join(__dirname, './src/lib'),
+        '@pages': path.join(__dirname, './src/pages'),
+        '@providers': path.join(__dirname, './src/providers'),
+        '@templates': path.join(__dirname, './src/templates'),
       },
     },
   });

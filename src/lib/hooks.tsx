@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { json2mq } from '@lib/utils';
 
-export { useTheme } from '@src/providers/ThemeProvider';
+export { useTheme } from '@providers/ThemeProvider';
 
 type Effect = (effect: EffectCallback, deps?: DependencyList) => void;
 

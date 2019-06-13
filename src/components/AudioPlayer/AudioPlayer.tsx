@@ -12,7 +12,7 @@ import {
 } from './AudioPlayer.styles';
 import { DownloadIconSVG } from './react-soundplayer/components/Icons';
 import { withCustomAudio } from './react-soundplayer/addons';
-import SRT from '../SRT';
+import SRT from '@components/SRT';
 
 // TODO: Lots of bugs in this component; refactoring as we go.
 

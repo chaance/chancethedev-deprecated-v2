@@ -1,5 +1,5 @@
 import 'unfetch';
-import './src/style.css';
+import './src/lib/style.css';
 
 export const shouldUpdateScroll = ({
   prevRouterProps,

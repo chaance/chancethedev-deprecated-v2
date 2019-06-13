@@ -1,78 +1,34 @@
 import React from 'react';
+import SRT from '@components/SRT';
+import { StyledMenu, StyledSubmenu } from './Menu.styles';
+import MenuLink from './MenuLink';
+import MenuItem from './MenuItem';
 
-import SRT from '../SRT';
-import { isValidUrl } from '../../lib/utils';
-import {
-  StyledMenu,
-  StyledSubmenu,
-  StyledMenuItem,
-  StyledMenuAnchor,
-  StyledMenuButton,
-  StyledMenuLink,
-} from './Menu.styles';
-import {
-  MenuItemData,
-  MenuItemProps,
-  MenuLinkProps,
-  MenuProps,
-} from './index.d';
+export interface MenuItemData {
+  id: string | number;
+  href?: string;
+  label: string;
+  options?: {
+    target?: string;
+    className?: string;
+    hideLabel?: boolean;
+  };
+  children?: MenuItemData[];
+  redirect?: string;
+  onClick?(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
+}
 
-//const noop = () => {};
-
-const MenuLink: React.FC<MenuLinkProps> = ({
-  href,
-  target,
-  label,
-  onClick,
-  rel,
-  redirect,
-  ...props
-}) => {
-  if (onClick) {
-    return (
-      <StyledMenuButton onClick={onClick} {...props}>
-        {label}
-      </StyledMenuButton>
-    );
-  }
-  if (href) {
-    const hrefIsUrl = isValidUrl(href);
-    return hrefIsUrl ? (
-      <StyledMenuAnchor
-        href={href}
-        target={target}
-        rel={target === '_blank' ? 'noopener noreferrer' : rel}
-        {...props}
-      >
-        {label}
-      </StyledMenuAnchor>
-    ) : (
-      <StyledMenuLink
-        to={href}
-        target={target}
-        rel={target === '_blank' ? 'noopener noreferrer' : rel}
-        {...props}
-      >
-        {label}
-      </StyledMenuLink>
-    );
-  }
-  return <span {...props}>{label}</span>;
-};
-
-const MenuItem: React.FC<MenuItemProps> = ({
-  children,
-  hasChildren = false,
-  ...props
-}) => {
-  return <StyledMenuItem {...props}>{children}</StyledMenuItem>;
-};
+export interface MenuProps {
+  className?: string;
+  items: MenuItemData[];
+}
 
 const Menu: React.FC<MenuProps> = ({ items, ...props }) => {
   const renderSubMenu = (subItems: MenuItemData[]) => {
     if (subItems && subItems.length) {
       return <StyledSubmenu>{renderMenuItems(subItems)}</StyledSubmenu>;
     }
+    return null;
   };
 
   const renderMenuItems = (items: MenuItemData[]) =>

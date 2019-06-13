@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyledFooter, StyledLink } from './Footer.styles';
 
-const Footer: React.FC<JSX.IntrinsicElements['footer']> = () => {
+const Footer: React.FC<JSX.IntrinsicElements['footer']> = props => {
   return (
-    <StyledFooter>
+    <StyledFooter {...props}>
       <p>
         © {new Date().getFullYear()}{' '}
         <StyledLink

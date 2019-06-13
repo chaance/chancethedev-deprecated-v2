@@ -7,8 +7,13 @@ import {
   StyledContentWrapper,
   CoverImg,
 } from './EpisodeList.styles';
+import { BuzzsproutNode } from '@lib/types';
 
-const Episode = ({
+export interface EpisodeProps {
+  node: BuzzsproutNode;
+}
+
+const Episode: React.FC<EpisodeProps> = ({
   node: {
     id,
     artwork_url,
@@ -18,7 +23,7 @@ const Episode = ({
     summary,
     title,
   },
-}: any) => {
+}) => {
   const modTitle = (title as string).replace(/^(E|e)[0-9]+:\s+/, '');
   return (
     <StyledEpisode>

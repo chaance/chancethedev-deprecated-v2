@@ -1,12 +1,19 @@
 import React from 'react';
-import TopNav from '../TopNav';
+import TopNav from '@components/TopNav';
 import {
   StyledHeader,
   StyledLink,
   StyledLogo,
   getStyledLogoContainer,
 } from './Header.styles';
-import { ThemeProps } from '@src/types';
+import { ThemeProps } from '@lib/theme';
+
+export interface HeaderProps {
+  siteTitle: string;
+  isHome?: boolean;
+}
+
+export type THeaderProps = JSX.IntrinsicElements['header'] & HeaderProps;
 
 const SiteTitle: React.FC = () => {
   return (
@@ -16,15 +23,14 @@ const SiteTitle: React.FC = () => {
   );
 };
 
-const Header: React.FC<
-  JSX.IntrinsicElements['div'] & {
-    siteTitle: string;
-    isHome?: boolean;
-  }
-> = ({ siteTitle = '', isHome = false }) => {
+const Header: React.FC<THeaderProps> = ({
+  siteTitle = '',
+  isHome = false,
+  ...props
+}) => {
   const StyledLogoContainer = getStyledLogoContainer(isHome);
   return (
-    <StyledHeader>
+    <StyledHeader {...props}>
       <StyledLogoContainer>
         {isHome ? (
           <SiteTitle />

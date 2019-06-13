@@ -20,8 +20,11 @@
     "paths": {
       "@src/*": ["src/*"],
       "@components/*": ["src/components/*"],
+      "@images/*": ["src/images/*"],
       "@lib/*": ["src/lib/*"],
-      "@images/*": ["src/images/*"]
+      "@pages/*": ["src/pages/*"],
+      "@providers/*": ["src/providers/*"],
+      "@templates/*": ["src/templates/*"]
     }
   },
   "include": ["./src/**/*"],

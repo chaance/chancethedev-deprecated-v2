@@ -2,9 +2,7 @@ import { kebabCase } from 'lodash';
 
 const NODE_ENV = process.env.NODE_ENV;
 
-/**
- * Tests whether a string is a valid URL.
- */
+// Tests whether a string is a valid URL.
 export const isValidUrl = (string: string): boolean => {
   try {
     new URL(string);

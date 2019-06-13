@@ -1,8 +1,10 @@
 import { css } from '@emotion/core';
-import { ThemeProps } from '@src/types';
+import { ThemeProps } from '@lib/types';
 import { json2mq } from '@lib/utils';
 import { breakpoints as BREAKPOINTS } from '@lib/theme';
 
+// Get the computed font size from the doc root element
+// Handy for calculating ems in the browser.
 export const getBaseFontSize = (fallback: number = 16): number => {
   try {
     if (typeof window === 'object' && typeof document === 'object') {
@@ -18,6 +20,7 @@ export const getBaseFontSize = (fallback: number = 16): number => {
   }
 };
 
+// Get a px or em unit from a string CSS value
 export const getUnit = (value: string): string | null => {
   const re = new RegExp(`(px|rem)`, 'g');
   if (!re.test(value)) {
@@ -27,19 +30,7 @@ export const getUnit = (value: string): string | null => {
   return sample ? sample[0] || null : null;
 };
 
-export const getRemBaseline = (
-  zoom: string | number = '100%',
-  baseFontSize: number = 16
-) => {
-  try {
-    if (typeof zoom !== 'number') zoom = parseInt(zoom);
-    return `${(zoom / 16) * baseFontSize}%`;
-  } catch (e) {
-    if (process.env.NODE_ENV === 'development') console.error(e);
-    return '100%';
-  }
-};
-
+// Convert px to rem or rem to px
 const remConvert = function(
   to: string,
   values: any[] | string | number,
@@ -70,10 +61,11 @@ const remConvert = function(
       }
       return null;
     })
-    .filter(n => !!n);
+    .filter(Boolean);
   return result.length ? (result.length === 1 ? result[0] : result) : null;
 };
 
+// Get a calculated REM from a pixel unit string
 export const getRem = (
   values: any[] | string | number,
   baseFontSize: number = 16

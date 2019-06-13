@@ -29,7 +29,6 @@ class Progress extends Component {
       duration,
     } = this.props;
     const { value, innerStyle = {} } = this.props;
-    console.log(duration);
 
     let width = value;
     if (!value && currentTime && duration)

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 import { getMode, getButton } from '@lib/style';
-import { ThemeProps } from '@src/types';
+import { ThemeProps } from '@lib/types';
 
 export const menuLinkStyles = (theme: ThemeProps) => css`
   color: ${getMode(theme).text.main};
@@ -66,7 +66,7 @@ export const StyledMenuItem = styled.li`
   font-size: 1.125rem;
 `;
 
-export const StyledMenuLink = styled(Link)`
+export const StyledMenuLink: any = styled(Link)`
   ${({ theme }) => menuLinkStyles(theme)};
 `;
 

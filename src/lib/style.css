@@ -1,5 +1,6 @@
 :root {
   --color-black: #363636;
+  --color-white: #ffffff;
   --color-hot-pink: #f64861;
   --color-lime-green: #e8f648;
   --color-blue: #146eff;
@@ -57,4 +58,33 @@ a:focus,
 *::-moz-focusring {
   outline: 2px dashed var(--color-hot-pink);
   outline-offset: 2px;
+}
+
+a.skipnav {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  text-align: left;
+  transform: translateX(-100%);
+  transition: transform 300ms ease-out;
+}
+
+a.skipnav:focus,
+a.skipnav:active {
+  color: var(--color-black);
+  width: auto;
+  height: auto;
+  overflow: visible;
+  font-weight: bold;
+  transform: translateX(0);
+  padding: 10px;
+  background: var(--color-white);
+  outline-offset: -4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.875rem;
 }

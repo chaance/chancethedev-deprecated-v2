@@ -11,10 +11,15 @@ const style = {
   overflow: 'hidden',
 };
 
-export type SRTProps = JSX.IntrinsicElements['span'] &
-  JSX.IntrinsicElements['div'] & { component?: 'div' | 'span' };
+export interface SRTProps {
+  component?: 'div' | 'span';
+}
 
-const SRT: React.FC<SRTProps> = ({ component: Comp = 'span', ...props }) => {
+export type TSRTProps = JSX.IntrinsicElements['span'] &
+  JSX.IntrinsicElements['div'] &
+  SRTProps;
+
+const SRT: React.FC<TSRTProps> = ({ component: Comp = 'span', ...props }) => {
   return <Comp style={style} {...props} />;
 };
 

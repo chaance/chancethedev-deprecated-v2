@@ -1,9 +1,11 @@
 import React from 'react';
 import SVG from '@components/SVG';
-import { useTheme } from '@src/providers/ThemeProvider';
-import { ThemeProps } from '@src/types';
+import { useTheme } from '@providers/ThemeProvider';
+import { ThemeProps } from '@lib/types';
 
-const SiteLogo: React.FC = ({ children, ...props }) => {
+export interface SiteLogoProps {}
+
+const SiteLogo: React.FC<SiteLogoProps> = ({ children, ...props }) => {
   const theme = useTheme() as ThemeProps;
   return (
     <SVG viewBox="0 0 2464.61 470" {...props}>

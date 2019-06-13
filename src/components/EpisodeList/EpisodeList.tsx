@@ -1,8 +1,15 @@
 import React from 'react';
 import Episode from './Episode';
 import { StyledList, StyledListItem } from './EpisodeList.styles';
+import { BuzzsproutNode } from '@lib/types';
 
-const EpisodeList = ({ episodes = [] }: any) => {
+export interface EpisodeListProps {
+  episodes: {
+    node: BuzzsproutNode;
+  }[];
+}
+
+const EpisodeList: React.FC<EpisodeListProps> = ({ episodes = [] }) => {
   return (
     <StyledList>
       {Array.isArray(episodes)
