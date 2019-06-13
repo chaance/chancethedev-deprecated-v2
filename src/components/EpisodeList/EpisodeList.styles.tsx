@@ -49,10 +49,10 @@ export const StyledContentWrapper: any = styled.div`
 `;
 
 export const CoverImgContainer: any = styled.div`
-  ${bp('medium')} {
+  /* ${bp('medium')} {
     perspective: 1000px;
     transform: scale(1.125);
-  }
+  } */
 `;
 
 export const CoverImg: any = styled.img`
@@ -60,8 +60,8 @@ export const CoverImg: any = styled.img`
   height: auto;
   width: auto;
   margin: 0 auto;
-  ${bp('medium')} {
+  /* ${bp('medium')} {
     width: 100%;
     transform: rotateY(30deg);
-  }
+  } */
 `;
