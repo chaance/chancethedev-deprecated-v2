@@ -25,7 +25,7 @@ exports.onCreateNode = ({ node, actions }) => {
   }
 };
 
-exports.createPages = ({ graphql, actions }) => {
+/* exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     const episodeTemplate = path.resolve('./src/templates/episode.tsx');
     const episodeQuery = `
@@ -62,7 +62,7 @@ exports.createPages = ({ graphql, actions }) => {
       })
     );
   });
-};
+}; */
 
 function toSlug(s) {
   if (!s) {
