@@ -20,10 +20,17 @@ export interface MenuItemData {
 
 export interface MenuProps {
   className?: string;
+  togglable?: boolean;
+  isActive?: boolean;
   items: MenuItemData[];
 }
 
-const Menu: React.FC<MenuProps> = ({ items, ...props }) => {
+const Menu: React.FC<MenuProps> = ({
+  items,
+  togglable,
+  isActive,
+  ...props
+}) => {
   const renderSubMenu = (subItems: MenuItemData[]) => {
     if (subItems && subItems.length) {
       return <StyledSubmenu>{renderMenuItems(subItems)}</StyledSubmenu>;
@@ -55,6 +62,7 @@ const Menu: React.FC<MenuProps> = ({ items, ...props }) => {
             href={href}
             label={hideLabel ? <SRT>{item.label}</SRT> : item.label}
             target={target}
+            tabIndex={togglable && !isActive ? -1 : 0}
           />
           {renderSubMenu(children)}
         </MenuItem>

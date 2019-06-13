@@ -6,6 +6,7 @@ import {
   StyledAudio,
   StyledContentWrapper,
   CoverImg,
+  CoverImgContainer,
 } from './EpisodeList.styles';
 import { BuzzsproutNode } from '@lib/types';
 
@@ -28,10 +29,12 @@ const Episode: React.FC<EpisodeProps> = ({
   return (
     <StyledEpisode>
       {artwork_url ? (
-        <CoverImg
-          src={artwork_url}
-          alt={`Cover for podcast episode ${episode_number}`}
-        />
+        <CoverImgContainer>
+          <CoverImg
+            src={artwork_url}
+            alt={`Cover for podcast episode ${episode_number}`}
+          />
+        </CoverImgContainer>
       ) : null}
 
       <StyledContentWrapper>

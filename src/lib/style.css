@@ -88,3 +88,9 @@ a.skipnav:active {
   letter-spacing: 1px;
   font-size: 0.875rem;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  a.skipnav {
+    transition: none;
+  }
+}

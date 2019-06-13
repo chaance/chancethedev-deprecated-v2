@@ -1,35 +1,6 @@
 import styled from '@emotion/styled';
-// import { Link } from 'gatsby';
-import { /* fullWidth, */ styleVars, breakpoint as bp } from '@lib/style';
-import Menu from '@components/Menu';
 
-export const StyledNav: any = styled.nav`
-  ${bp('small down')} {
-    z-index: 10;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: #fff;
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    left: 100%;
-    top: 0;
-    padding: calc(${styleVars.outerMargin} / 2);
-    transition: transform 300ms ease-out;
-    transform: translateX(
-      ${({ menuActive }: any) => (menuActive ? '-100%' : '0')}
-    );
-  }
-
-  ${bp('medium')} {
-    position: relative;
-  }
-`;
-
-export const MenuToggle: any = styled.button`
+export const StyledMenuToggle: any = styled.button`
   position: relative;
   z-index: 11;
   height: 100%;
@@ -38,12 +9,15 @@ export const MenuToggle: any = styled.button`
   border: 1px solid transparent;
   appearance: none;
   transition: transform 500ms cubic-bezier(0.2, 0.3, 0.25, 0.9) 0s;
-  outline: 0;
   padding: 0;
   border-radius: 0;
   box-shadow: none;
   background-color: transparent;
   cursor: pointer;
+
+  &:not(:focus) {
+    outline: 0;
+  }
 
   ${({ 'aria-expanded': active }) =>
     active
@@ -110,14 +84,5 @@ export const MenuToggle: any = styled.button`
             `
           : null}
     }
-  }
-`;
-
-export const StyledMenu: any = styled(Menu)`
-  display: grid;
-  grid-template: auto / auto;
-  grid-row-gap: 20px;
-  ${bp('medium')} {
-    display: flex;
   }
 `;

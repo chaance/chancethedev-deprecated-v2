@@ -56,3 +56,13 @@ export function usePrevious(value: any): any {
 export const useMedia = createUseMedia(useEffect);
 
 export const useMediaLayout = createUseMedia(useLayoutEffect);
+
+let _id = 0;
+const genId = () => ++_id;
+type IDState = number | null;
+
+export const useId = (): IDState => {
+  const [id, setId] = useState<IDState>(null);
+  useEffect(() => setId(genId()), []);
+  return id;
+};

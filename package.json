@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "gatsby develop",
     "build": "rm -rf .cache && gatsby build --prefix-links",
-    "start": "yarn develop",
+    "start": "yarn dev",
     "serve": "gatsby serve",
     "codegen": "graphql-codegen --config codegen.yml"
   },

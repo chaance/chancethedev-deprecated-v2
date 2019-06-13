@@ -48,6 +48,13 @@ export const StyledContentWrapper: any = styled.div`
   justify-content: flex-start;
 `;
 
+export const CoverImgContainer: any = styled.div`
+  ${bp('medium')} {
+    perspective: 1000px;
+    transform: scale(1.125);
+  }
+`;
+
 export const CoverImg: any = styled.img`
   display: block;
   height: auto;
@@ -55,5 +62,6 @@ export const CoverImg: any = styled.img`
   margin: 0 auto;
   ${bp('medium')} {
     width: 100%;
+    transform: rotateY(30deg);
   }
 `;

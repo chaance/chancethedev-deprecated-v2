@@ -25,7 +25,7 @@ export const menuLinkStyles = (theme: ThemeProps) => css`
     width: 100%;
     content: '';
     display: block;
-    transition: 0.2s;
+    transition: transform 0.2s ease-out, background 0.2s ease-out;
     transform-origin: left;
     transform: scaleX(0);
     background: ${theme.brand.secondary};
@@ -42,6 +42,35 @@ export const menuLinkStyles = (theme: ThemeProps) => css`
 
     &:after {
       transform: scaleX(1);
+    }
+  }
+
+  &:focus,
+  &:focus-within {
+    &:after {
+      transform: scaleX(1);
+      background: ${theme.brand.primary};
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    transform: none;
+
+    &:after {
+      transition: none;
+    }
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      transition: none;
+      transform: none;
+
+      &:after {
+        transition: none;
+        transform: none;
+      }
     }
   }
 `;
