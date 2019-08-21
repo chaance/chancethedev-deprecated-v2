@@ -20,7 +20,7 @@ const Footer: React.FC<JSX.IntrinsicElements['footer']> = props => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Gatsby.js
+          GatsbyJS
         </StyledLink>{' '}
         |{' '}
         <StyledLink
