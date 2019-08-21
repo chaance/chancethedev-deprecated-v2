@@ -44,9 +44,9 @@ const Episode: React.FC<EpisodeProps> = ({
         </header>
         {summary ? <p>{summary}</p> : null}
         <StyledAudio
-          trackTitle={title}
+          //trackTitle={title}
           streamUrl={audio_url}
-          preloadType="auto"
+          // preloadType="auto"
         />
       </StyledContentWrapper>
     </StyledEpisode>

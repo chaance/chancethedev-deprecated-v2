@@ -38,8 +38,8 @@ const Menu: React.FC<MenuProps> = ({
     return null;
   };
 
-  const renderMenuItems = (items: MenuItemData[]) =>
-    items.map(item => {
+  const renderMenuItems = (menuItems: MenuItemData[]) =>
+    menuItems.map(item => {
       const {
         id,
         href,

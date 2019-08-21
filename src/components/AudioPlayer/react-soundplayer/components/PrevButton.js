@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SoundCloudAudio from 'soundcloud-audio';
 import { PrevIconSVG } from './Icons';
 import SRT from './SRT';
 
 const PrevButton = props => {
   const { className, style } = this.props;
   function handleClick(e) {
-    const { soundCloudAudio, onPrevClick } = props;
-    soundCloudAudio && soundCloudAudio.previous();
+    const { audioTrack, onPrevClick } = props;
+    audioTrack && audioTrack.previous();
     onPrevClick && onPrevClick(e);
   }
   return (
@@ -27,7 +26,7 @@ const PrevButton = props => {
 PrevButton.propTypes = {
   className: PropTypes.string,
   onNextClick: PropTypes.func,
-  soundCloudAudio: PropTypes.instanceOf(SoundCloudAudio),
+  audioTrack: PropTypes.any,
 };
 
 export default PrevButton;

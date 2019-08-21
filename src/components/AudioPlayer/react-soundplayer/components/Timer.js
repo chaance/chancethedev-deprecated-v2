@@ -7,13 +7,13 @@ const Timer = ({
   currentTime = 0,
   className,
   style,
-  soundCloudAudio,
+  audioTrack,
   duration = 0,
 }) => {
   const classNames = cx('sb-soundplayer-timer', className);
 
-  if (!duration && soundCloudAudio && soundCloudAudio.duration) {
-    duration = soundCloudAudio.duration;
+  if (!duration && audioTrack && audioTrack.duration) {
+    duration = audioTrack.duration;
   }
 
   return (

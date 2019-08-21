@@ -12,31 +12,31 @@ function each(arr, cb) {
 }
 
 export function stopAllOther(playing) {
-  each(_playedAudios, soundCloudAudio => {
-    if (soundCloudAudio.playing && soundCloudAudio.playing !== playing) {
-      soundCloudAudio.stop();
+  each(_playedAudios, audioTrack => {
+    if (audioTrack.playing && audioTrack.playing !== playing) {
+      audioTrack.stop();
     }
   });
 }
 
-export function addToPlayedStore(soundCloudAudio) {
+export function addToPlayedStore(audioTrack) {
   let isPresent = false;
 
-  each(_playedAudios, _soundCloudAudio => {
-    if (_soundCloudAudio.playing === soundCloudAudio.playing) {
+  each(_playedAudios, _audioTrack => {
+    if (_audioTrack.playing === audioTrack.playing) {
       isPresent = true;
       return true;
     }
   });
 
   if (!isPresent) {
-    _playedAudios.push(soundCloudAudio);
+    _playedAudios.push(audioTrack);
   }
 }
 
 export function resetPlayedStore() {
-  each(_playedAudios, soundCloudAudio => {
-    soundCloudAudio.stop();
+  each(_playedAudios, audioTrack => {
+    audioTrack.stop();
   });
 
   _playedAudios = [];

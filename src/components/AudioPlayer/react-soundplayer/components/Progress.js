@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SoundCloudAudio from 'soundcloud-audio';
 // import prettyTime from '../utils/prettyTime';
 
 class Progress extends Component {
@@ -10,12 +9,12 @@ class Progress extends Component {
   }
 
   handleSeekTrack(e) {
-    const { onSeekTrack, soundCloudAudio } = this.props;
+    const { onSeekTrack, audioTrack } = this.props;
     const xPos =
       (e.pageX - e.currentTarget.getBoundingClientRect().left) /
       e.currentTarget.offsetWidth;
-    if (soundCloudAudio && !isNaN(soundCloudAudio.audio.duration)) {
-      soundCloudAudio.audio.currentTime = xPos * soundCloudAudio.audio.duration;
+    if (audioTrack && !isNaN(audioTrack.audio.duration)) {
+      audioTrack.audio.currentTime = xPos * audioTrack.audio.duration;
     }
     onSeekTrack && onSeekTrack.call(this, xPos, e);
   }
@@ -67,7 +66,7 @@ Progress.propTypes = {
   innerStyle: PropTypes.object,
   value: PropTypes.number,
   onSeekTrack: PropTypes.func,
-  soundCloudAudio: PropTypes.instanceOf(SoundCloudAudio),
+  audioTrack: PropTypes.any,
 };
 
 Progress.defaultProps = {

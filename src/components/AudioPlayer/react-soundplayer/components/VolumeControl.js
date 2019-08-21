@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SoundCloudAudio from 'soundcloud-audio';
 import cx from 'classnames';
 import VolumeButton from './VolumeButton';
 import VolumeRange from './VolumeRange';
@@ -13,18 +12,13 @@ class VolumeControl extends Component {
   }
 
   handleVolumeChange(e) {
-    const {
-      onVolumeChange,
-      onToggleMute,
-      soundCloudAudio,
-      isMuted,
-    } = this.props;
+    const { onVolumeChange, onToggleMute, audioTrack, isMuted } = this.props;
     const xPos = e.target.value / 100;
     const mute = xPos <= 0 && !isMuted;
 
-    if (soundCloudAudio && !isNaN(soundCloudAudio.audio.volume)) {
-      soundCloudAudio.audio.volume = xPos;
-      soundCloudAudio.audio.muted = mute;
+    if (audioTrack && !isNaN(audioTrack.audio.volume)) {
+      audioTrack.audio.volume = xPos;
+      audioTrack.audio.muted = mute;
     }
 
     if (mute !== isMuted) {
@@ -35,10 +29,10 @@ class VolumeControl extends Component {
   }
 
   handleMute(e) {
-    const { onToggleMute, soundCloudAudio } = this.props;
+    const { onToggleMute, audioTrack } = this.props;
 
-    if (soundCloudAudio && !isNaN(soundCloudAudio.audio.muted)) {
-      soundCloudAudio.audio.muted = !soundCloudAudio.audio.muted;
+    if (audioTrack && !isNaN(audioTrack.audio.muted)) {
+      audioTrack.audio.muted = !audioTrack.audio.muted;
     }
     onToggleMute && onToggleMute.call(this, !this.props.isMuted, e);
   }
@@ -109,7 +103,7 @@ VolumeControl.propTypes = {
   volume: PropTypes.number,
   onVolumeChange: PropTypes.func,
   onToggleMute: PropTypes.func,
-  soundCloudAudio: PropTypes.instanceOf(SoundCloudAudio),
+  audioTrack: PropTypes.any,
   children: PropTypes.func,
 };
 

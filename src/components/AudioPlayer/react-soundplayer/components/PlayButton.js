@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SoundCloudAudio from 'soundcloud-audio';
 import { PlayIconSVG, PauseIconSVG, LoadingIconSVG } from './Icons';
 import SRT from './SRT';
 
@@ -16,17 +15,17 @@ class PlayButton extends Component {
   }
 
   handleClick(e) {
-    const { playReady, playing, soundCloudAudio, onTogglePlay } = this.props;
+    const { playReady, playing, audioTrack, onTogglePlay } = this.props;
 
     if (!playReady) return;
 
     if (!playing) {
-      soundCloudAudio &&
-        soundCloudAudio.play({
-          playlistIndex: soundCloudAudio._playlistIndex,
+      audioTrack &&
+        audioTrack.play({
+          playlistIndex: audioTrack._playlistIndex,
         });
     } else {
-      soundCloudAudio && soundCloudAudio.pause();
+      audioTrack && audioTrack.pause();
     }
 
     onTogglePlay && onTogglePlay(e);
@@ -34,17 +33,21 @@ class PlayButton extends Component {
 
   render() {
     const {
+      audioTrack,
+      currentTime,
       playing,
       playReady,
       seekingIcon,
+      isMuted,
       seeking,
+      streamUrl,
       className,
       ...props
     } = this.props;
 
     let iconNode;
     let label;
-    let disabled = !!(seeking && seekingIcon);
+    const disabled = !!(seeking && seekingIcon);
 
     if (!playReady) {
       iconNode = <LoadingIconSVG aria-hidden />;
@@ -81,7 +84,7 @@ PlayButton.propTypes = {
   playing: PropTypes.bool,
   onTogglePlay: PropTypes.func,
   seekingIcon: PropTypes.node,
-  soundCloudAudio: PropTypes.instanceOf(SoundCloudAudio),
+  audioTrack: PropTypes.any,
 };
 
 PlayButton.defaultProps = {

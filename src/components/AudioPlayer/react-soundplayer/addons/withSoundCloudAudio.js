@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SoundCloudAudio from 'soundcloud-audio';
+import SoundCloudAudio from '../soundcloud-audio';
 import hoistStatics from 'hoist-non-react-statics';
 import {
   stopAllOther,
@@ -16,7 +16,7 @@ export default function withSoundCloudAudio(WrappedComponent) {
     constructor(props, context) {
       super(props, context);
 
-      if (!props.clientId && !props.soundCloudAudio && !props.streamUrl) {
+      if (!props.clientId && !props.audioTrack && !props.streamUrl) {
         /* console.warn(
           `You need to get a clientId from SoundCloud,
           pass in an instance of SoundCloudAudio
@@ -28,10 +28,10 @@ export default function withSoundCloudAudio(WrappedComponent) {
       // Don't create a SoundCloudAudio instance
       // if there is no `window`
       if ('undefined' !== typeof window) {
-        if (props.soundCloudAudio) {
-          this.soundCloudAudio = props.soundCloudAudio;
+        if (props.audioTrack) {
+          this.audioTrack = props.audioTrack;
         } else {
-          this.soundCloudAudio = new SoundCloudAudio(props.clientId);
+          this.audioTrack = new SoundCloudAudio(props.clientId);
         }
       }
 
@@ -57,17 +57,17 @@ export default function withSoundCloudAudio(WrappedComponent) {
       this.mounted = false;
 
       resetPlayedStore();
-      this.soundCloudAudio.unbindAll();
+      this.audioTrack.unbindAll();
     }
 
     requestAudio() {
-      const { soundCloudAudio } = this;
+      const { audioTrack } = this;
       const { resolveUrl, streamUrl, preloadType, onReady } = this.props;
 
       if (streamUrl) {
-        soundCloudAudio.preload(streamUrl, preloadType);
+        audioTrack.preload(streamUrl, preloadType);
       } else if (resolveUrl) {
-        soundCloudAudio.resolve(resolveUrl, data => {
+        audioTrack.resolve(resolveUrl, data => {
           if (!this.mounted) {
             return;
           }
@@ -83,17 +83,17 @@ export default function withSoundCloudAudio(WrappedComponent) {
     }
 
     listenAudioEvents() {
-      const { soundCloudAudio } = this;
+      const { audioTrack } = this;
 
       // https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events
-      soundCloudAudio.on('playing', this.onAudioStarted.bind(this));
-      soundCloudAudio.on('timeupdate', this.getCurrentTime.bind(this));
-      soundCloudAudio.on('loadedmetadata', this.getDuration.bind(this));
-      soundCloudAudio.on('seeking', this.onSeekingTrack.bind(this));
-      soundCloudAudio.on('seeked', this.onSeekedTrack.bind(this));
-      soundCloudAudio.on('pause', this.onAudioPaused.bind(this));
-      soundCloudAudio.on('ended', this.onAudioEnded.bind(this));
-      soundCloudAudio.on('volumechange', this.onVolumeChange.bind(this));
+      audioTrack.on('playing', this.onAudioStarted.bind(this));
+      audioTrack.on('timeupdate', this.getCurrentTime.bind(this));
+      audioTrack.on('loadedmetadata', this.getDuration.bind(this));
+      audioTrack.on('seeking', this.onSeekingTrack.bind(this));
+      audioTrack.on('seeked', this.onSeekedTrack.bind(this));
+      audioTrack.on('pause', this.onAudioPaused.bind(this));
+      audioTrack.on('ended', this.onAudioEnded.bind(this));
+      audioTrack.on('volumechange', this.onVolumeChange.bind(this));
     }
 
     onSeekingTrack() {
@@ -105,42 +105,42 @@ export default function withSoundCloudAudio(WrappedComponent) {
     }
 
     onAudioStarted() {
-      const { soundCloudAudio } = this;
+      const { audioTrack } = this;
       const { onStartTrack } = this.props;
       this.setState({ playing: true });
-      stopAllOther(soundCloudAudio.playing);
-      addToPlayedStore(soundCloudAudio);
-      onStartTrack && onStartTrack(soundCloudAudio, soundCloudAudio.playing);
+      stopAllOther(audioTrack.playing);
+      addToPlayedStore(audioTrack);
+      onStartTrack && onStartTrack(audioTrack, audioTrack.playing);
     }
 
     onAudioPaused() {
       const { onPauseTrack } = this.props;
       this.setState({ playing: false });
-      onPauseTrack && onPauseTrack(this.soundCloudAudio);
+      onPauseTrack && onPauseTrack(this.audioTrack);
     }
 
     onAudioEnded() {
       const { onStopTrack } = this.props;
       this.setState({ playing: false });
-      onStopTrack && onStopTrack(this.soundCloudAudio);
+      onStopTrack && onStopTrack(this.audioTrack);
     }
 
     onVolumeChange() {
       this.setState({
-        volume: this.soundCloudAudio.audio.volume,
-        isMuted: this.soundCloudAudio.audio.muted,
+        volume: this.audioTrack.audio.volume,
+        isMuted: this.audioTrack.audio.muted,
       });
     }
 
     getCurrentTime() {
       this.setState({
-        currentTime: this.soundCloudAudio.audio.currentTime,
+        currentTime: this.audioTrack.audio.currentTime,
       });
     }
 
     getDuration() {
       this.setState({
-        duration: this.soundCloudAudio.audio.duration,
+        duration: this.audioTrack.audio.duration,
       });
     }
 
@@ -148,7 +148,7 @@ export default function withSoundCloudAudio(WrappedComponent) {
       return (
         <WrappedComponent
           {...this.props}
-          soundCloudAudio={this.soundCloudAudio}
+          audioTrack={this.audioTrack}
           {...this.state}
         />
       );
