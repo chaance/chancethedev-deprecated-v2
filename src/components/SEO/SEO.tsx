@@ -9,6 +9,7 @@ export interface SEOProps {
   meta?: HelmetProps['meta'];
   title?: string;
   imageUrl?: string;
+  showSiteTitle?: boolean;
 }
 
 /**
@@ -22,6 +23,7 @@ const SEO: React.FC<SEOProps> = ({
   lang = 'en',
   meta = [],
   title = 'Chance the Developer Podcast',
+  showSiteTitle = true,
   imageUrl,
 }) => {
   const { site } = useStaticQuery(
@@ -64,13 +66,17 @@ const SEO: React.FC<SEOProps> = ({
     { name: 'apple-itunes-app', content: 'app-id=1344502648' },
   ];
 
+  const titleTemplate = showSiteTitle
+    ? `%s | ${site.siteMetadata.title}`
+    : site.siteMetadata.title;
+
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={titleTemplate}
       meta={[...defaultMeta, ...meta].filter(Boolean)}
     />
   );

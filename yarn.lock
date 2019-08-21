@@ -787,10 +787,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@chancedigital/eslint-config@3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@chancedigital/eslint-config/-/eslint-config-3.1.0.tgz#0a805c7ce7f6b5e100ba3e6ad70603c52d19b27b"
-  integrity sha512-cHnnEym6wFcup6Ss2xWC6PJYHlP2cYLT6QVopEEi7dWh6C57mBqcF/gGHBOqcva/9TCqqibVkCyFfVbZPu74kg==
+"@chancedigital/eslint-config@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@chancedigital/eslint-config/-/eslint-config-4.0.0.tgz#93aad047a05e9734b18cb28efb58a0f53584331b"
+  integrity sha512-Qq02n/Es4rSR6lMN4gh6AMQvT/j2XHgPM/dYdYR8W/l0khclo4KO1jEorNMCxrnNC8S/vU8bAJeFeUqdgnNK0A==
 
 "@emotion/babel-plugin-jsx-pragmatic@^0.1.3":
   version "0.1.3"
@@ -9825,9 +9825,9 @@ node-pre-gyp@^0.12.0:
     tar "^4"
 
 node-releases@^1.1.25:
-  version "1.1.27"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.27.tgz#b19ec8add2afe9a826a99dceccc516104c1edaf4"
-  integrity sha512-9iXUqHKSGo6ph/tdXVbHFbhRVQln4ZDTIBJCzsa90HimnBYc5jw8RWYt4wBYFHehGyC3koIz5O4mb2fHrbPOuA==
+  version "1.1.28"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.28.tgz#503c3c70d0e4732b84e7aaa2925fbdde10482d4a"
+  integrity sha512-AQw4emh6iSXnCpDiFe0phYcThiccmkNWMZnFZ+lDJjAP8J0m2fVd59duvUUyuTirQOhIAajTFkzG6FHCLBO59g==
   dependencies:
     semver "^5.3.0"
 
@@ -12669,11 +12669,6 @@ sort-keys@^2.0.0:
   integrity sha1-ZYU1WEhh7JfXMNbPQYIuH1ZoQSg=
   dependencies:
     is-plain-obj "^1.0.0"
-
-soundcloud-audio@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/soundcloud-audio/-/soundcloud-audio-1.4.0.tgz#2d9ceeaa8a3c63d814e18c4c2602fe3be9a99655"
-  integrity sha512-2kHyTfu+KNOLZuRKynaeTmj846deC1WbiDTu7rkd1/93lk9FxtgbGkNQSIy5H4gxZD9EEeTdXhkE7uiMwEXuEQ==
 
 source-list-map@^2.0.0:
   version "2.0.1"

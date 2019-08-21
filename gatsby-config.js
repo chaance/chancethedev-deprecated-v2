@@ -2,9 +2,9 @@ const siteUrl = 'https://chancethedev.com';
 
 module.exports = {
   siteMetadata: {
-    title: 'Chance the Developer 🔥 Podcast',
+    title: 'Chance the Developer 🔥 Podcast on Tech, People, and Stories',
     siteUrl,
-    description: `Two parts web development, one part exploration, add a dash of the unknown.`,
+    description: `Join me as I talk with web developers and software engineers about building their careers, overcoming challenges, and succeeding in the tech industry.`,
     author: `@chancethedev`,
   },
   plugins: [

@@ -66,7 +66,7 @@ class VolumeControl extends Component {
 
     return (
       <div className={classNames}>
-        {!!children ? (
+        {children ? (
           children({
             handleMute: this.handleMute,
             handleVolumeChange: this.handleVolumeChange,

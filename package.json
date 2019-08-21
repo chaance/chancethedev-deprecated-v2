@@ -65,11 +65,10 @@
     "react-dom": "16.9.0",
     "react-helmet": "5.2.1",
     "react-loadable": "5.5.0",
-    "soundcloud-audio": "1.4.0",
     "unfetch": "4.1.0"
   },
   "devDependencies": {
-    "@chancedigital/eslint-config": "3.1.0",
+    "@chancedigital/eslint-config": "4.0.0",
     "@graphql-codegen/cli": "1.6.1",
     "@graphql-codegen/typescript": "1.6.1",
     "@graphql-codegen/typescript-operations": "1.6.1",
@@ -100,7 +99,20 @@
     "extends": [
       "@chancedigital/eslint-config/react",
       "@chancedigital/eslint-config/typescript"
-    ]
+    ],
+    "rules": {
+      "indent": [
+        1,
+        2,
+        {
+          "SwitchCase": 1,
+          "ignoredNodes": [
+            "ConditionalExpression"
+          ],
+          "ignoreComments": true
+        }
+      ]
+    }
   },
   "eslintIgnore": [
     "public"

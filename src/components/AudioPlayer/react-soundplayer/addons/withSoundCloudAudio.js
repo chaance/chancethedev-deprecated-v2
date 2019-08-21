@@ -1,3 +1,9 @@
+// NOTE: This HOC is a hack that I'm in the process of phasing out.
+//       I do not use soundcloud but the react-soundplayer component works
+//       with a direct audio src and fit my needs for the most part.
+//       If you stumble upon this and decide to clone it, beware that I
+//       expect some unpredictable weirdness.
+
 import React, { Component } from 'react';
 import SoundCloudAudio from '../soundcloud-audio';
 import hoistStatics from 'hoist-non-react-statics';

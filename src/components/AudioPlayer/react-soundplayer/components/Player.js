@@ -8,6 +8,7 @@ export function usePrevious(value) {
   return ref.current;
 }
 
+/* eslint-disable indent */
 const renderSource = src =>
   Array.isArray(src)
     ? src.map((source, i) => (
@@ -18,6 +19,7 @@ const renderSource = src =>
         />
       ))
     : null;
+/* eslint-enable indent */
 
 const INITIAL_STATE = {
   duration: 0,

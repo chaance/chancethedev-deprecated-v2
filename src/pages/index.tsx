@@ -13,7 +13,11 @@ const IndexPage: React.FC<{ data: any }> = ({
 }) => {
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO
+        showSiteTitle={false}
+        title="Chance the Developer 🔥 Podcast on Tech, People, and Stories"
+        description="Join me as I talk with web developers and software engineers about building their careers, overcoming challenges, and succeeding in the tech industry."
+      />
       <EpisodeList episodes={episodes} />
     </Layout>
   );

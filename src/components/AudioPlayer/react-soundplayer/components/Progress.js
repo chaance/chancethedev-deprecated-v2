@@ -22,7 +22,7 @@ class Progress extends Component {
   render() {
     const {
       className,
-      innerClassName,
+      //innerClassName,
       style,
       currentTime,
       duration,
