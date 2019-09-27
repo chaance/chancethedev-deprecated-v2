@@ -5,6 +5,7 @@ import Footer from '$components/Footer';
 import { SkipNavLink, SkipNavContent } from '$components/SkipNav';
 import { Container } from './Layout.styles';
 import { Element } from '../../lib/types';
+import ThemeProvider from '$providers/ThemeProvider';
 
 export interface LayoutProps extends Element<'div'> {}
 
@@ -19,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }
   `);
   return (
-    <>
+    <ThemeProvider>
       <SkipNavLink className="skipnav" />
       <Header siteTitle={data.site.siteMetadata.title} />
       <Container>
@@ -27,7 +28,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <main style={{ padding: `4rem 0` }}>{children}</main>
       </Container>
       <Footer />
-    </>
+    </ThemeProvider>
   );
 };
 
