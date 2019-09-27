@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { MenuItemData } from '@components/Menu';
-import MenuToggle from '@components/MenuToggle';
-import { TOP_NAV_MENU } from '@lib/constants';
-import { useMediaLayout, useTheme, useId } from '@lib/hooks';
-import { ThemeProps } from '@lib/types';
+import { MenuItemData } from '$components/Menu';
+import MenuToggle from '$components/MenuToggle';
+import { TOP_NAV_MENU } from '$lib/constants';
+import { useMediaLayout, useTheme, useId } from '$lib/hooks';
+import { ThemeProps } from '$lib/types';
 import { StyledNav, StyledMenu } from './TopNav.styles';
 
 // TODO: Implement some kind of focus management so that the user can tab back to the toggle button after they finish tabbing through the nav menu.

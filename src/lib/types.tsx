@@ -4,7 +4,7 @@ export {
   ThemeFontProps,
   ThemeModeProps,
   ThemeProps,
-} from '@lib/theme';
+} from '$lib/theme';
 
 export interface BuzzsproutNode {
   artist?: string;
@@ -22,3 +22,9 @@ export interface BuzzsproutNode {
   summary?: string;
   published_at?: Date;
 }
+
+// Use to extend JSX Element props by passing a string reference to the tag
+// e.g.: interface MyButtonProps extends Element<'button'>
+export type Element<
+  T extends keyof JSX.IntrinsicElements
+> = React.PropsWithoutRef<JSX.IntrinsicElements[T]>;

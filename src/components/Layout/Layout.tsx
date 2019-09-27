@@ -1,36 +1,34 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import Header from '@components/Header';
-import Footer from '@components/Footer';
-import { SkipNavLink, SkipNavContent } from '@components/SkipNav';
-import ThemeProvider from '@providers/ThemeProvider';
+import { graphql, useStaticQuery } from 'gatsby';
+import Header from '$components/Header';
+import Footer from '$components/Footer';
+import { SkipNavLink, SkipNavContent } from '$components/SkipNav';
 import { Container } from './Layout.styles';
+import { Element } from '../../lib/types';
 
-export interface LayoutProps {}
+export interface LayoutProps extends Element<'div'> {}
 
-const Layout: React.FC<LayoutProps> = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
         }
       }
-    `}
-    render={data => (
-      <ThemeProvider>
-        <SkipNavLink className="skipnav" />
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <Container>
-          <SkipNavContent />
-          <main style={{ padding: `4rem 0` }}>{children}</main>
-        </Container>
-        <Footer />
-      </ThemeProvider>
-    )}
-  />
-);
+    }
+  `);
+  return (
+    <>
+      <SkipNavLink className="skipnav" />
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <Container>
+        <SkipNavContent />
+        <main style={{ padding: `4rem 0` }}>{children}</main>
+      </Container>
+      <Footer />
+    </>
+  );
+};
 
 export default Layout;

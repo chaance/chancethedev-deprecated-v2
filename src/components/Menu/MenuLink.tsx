@@ -1,6 +1,6 @@
 import React from 'react';
 import { GatsbyLinkProps } from 'gatsby-link';
-import { isValidUrl } from '@lib/utils';
+import { isValidUrl } from '$lib/utils';
 import {
   StyledMenuAnchor,
   StyledMenuButton,

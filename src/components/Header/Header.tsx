@@ -1,12 +1,12 @@
 import React from 'react';
-import TopNav from '@components/TopNav';
+import TopNav from '$components/TopNav';
 import {
   StyledHeader,
   StyledLink,
   StyledLogo,
   getStyledLogoContainer,
 } from './Header.styles';
-import { ThemeProps } from '@lib/theme';
+import { ThemeProps } from '$lib/theme';
 
 export interface HeaderProps {
   siteTitle: string;

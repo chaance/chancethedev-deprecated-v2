@@ -1,5 +1,5 @@
 import React from 'react';
-import SRT from '@components/SRT';
+import SRT from '$components/SRT';
 import { StyledMenuToggle } from './MenuToggle.styles';
 
 export interface MenuToggleProps {

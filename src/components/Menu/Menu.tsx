@@ -1,5 +1,5 @@
 import React from 'react';
-import SRT from '@components/SRT';
+import SRT from '$components/SRT';
 import { StyledMenu, StyledSubmenu } from './Menu.styles';
 import MenuLink from './MenuLink';
 import MenuItem from './MenuItem';

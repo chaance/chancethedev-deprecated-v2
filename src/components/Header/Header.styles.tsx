@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import { fullWidth, styleVars, breakpoint } from '@lib/style';
-import SiteLogo from '@components/SiteLogo';
+import { fullWidth, styleVars, breakpoint } from '$lib/style';
+import SiteLogo from '$components/SiteLogo';
 
 export const StyledLogo = styled(SiteLogo)`
   display: block;

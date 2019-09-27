@@ -18,13 +18,13 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": "./",
     "paths": {
-      "@src/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@images/*": ["src/images/*"],
-      "@lib/*": ["src/lib/*"],
-      "@pages/*": ["src/pages/*"],
-      "@providers/*": ["src/providers/*"],
-      "@templates/*": ["src/templates/*"]
+      "$src/*": ["src/*"],
+      "$components/*": ["src/components/*"],
+      "$images/*": ["src/images/*"],
+      "$lib/*": ["src/lib/*"],
+      "$pages/*": ["src/pages/*"],
+      "$providers/*": ["src/providers/*"],
+      "$templates/*": ["src/templates/*"]
     }
   },
   "include": ["./src/**/*"],

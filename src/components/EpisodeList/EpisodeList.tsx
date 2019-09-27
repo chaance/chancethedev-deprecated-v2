@@ -1,7 +1,8 @@
+/* eslint-disable indent */
 import React from 'react';
 import Episode from './Episode';
 import { StyledList, StyledListItem } from './EpisodeList.styles';
-import { BuzzsproutNode } from '@lib/types';
+import { BuzzsproutNode } from '$lib/types';
 
 export interface EpisodeListProps {
   episodes: {

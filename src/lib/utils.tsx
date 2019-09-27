@@ -1,3 +1,4 @@
+import { EventHandler } from 'react';
 import { kebabCase } from 'lodash';
 
 const NODE_ENV = process.env.NODE_ENV;
@@ -5,6 +6,7 @@ const NODE_ENV = process.env.NODE_ENV;
 // Tests whether a string is a valid URL.
 export const isValidUrl = (string: string): boolean => {
   try {
+    // eslint-disable-next-line no-new
     new URL(string);
     return true;
   } catch (_) {
@@ -90,12 +92,32 @@ export const invariant = function(
           'for the full error message and additional helpful warnings.'
       );
     } else {
-      var argIndex = 0;
+      let argIndex = 0;
       error = new Error(format.replace(/%s/g, () => args[argIndex++]));
       error.name = 'Invariant Violation';
     }
     // @ts-ignore
     error.framesToPop = 1; // we don't care about invariant's own frame
     throw error;
+  }
+};
+
+export const wrapEvent = <E extends React.SyntheticEvent>(
+  theirHandler: EventHandler<E> | undefined,
+  ourHandler: EventHandler<E>
+) => (event: E) => {
+  theirHandler && theirHandler(event);
+  if (!event.defaultPrevented) {
+    return ourHandler(event);
+  }
+};
+
+export const callEventWithDefault = <E extends React.SyntheticEvent>(
+  theirHandler: EventHandler<E> | undefined,
+  ourHandler: EventHandler<E>
+) => (event: E) => {
+  theirHandler && theirHandler(event);
+  if (!event.defaultPrevented) {
+    ourHandler && ourHandler(event);
   }
 };

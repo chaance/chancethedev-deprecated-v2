@@ -6,9 +6,9 @@ import {
   DependencyList,
   EffectCallback,
 } from 'react';
-import { json2mq } from '@lib/utils';
+import { json2mq } from '$lib/utils';
 
-export { useTheme } from '@providers/ThemeProvider';
+export { useTheme } from '$providers/ThemeProvider';
 
 type Effect = (effect: EffectCallback, deps?: DependencyList) => void;
 
@@ -59,10 +59,10 @@ export const useMediaLayout = createUseMedia(useLayoutEffect);
 
 let _id = 0;
 const genId = () => ++_id;
-type IDState = number | null;
+type IDState = number;
 
 export const useId = (): IDState => {
-  const [id, setId] = useState<IDState>(null);
+  const [id, setId] = useState<IDState>(_id);
   useEffect(() => setId(genId()), []);
   return id;
 };

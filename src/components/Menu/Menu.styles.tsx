@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
-import { getMode, getButton } from '@lib/style';
-import { ThemeProps } from '@lib/types';
+import { getMode, getButton } from '$lib/style';
+import { ThemeProps } from '$lib/types';
 
 export const menuLinkStyles = (theme: ThemeProps) => css`
   color: ${getMode(theme).text.main};

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 // import { Link } from 'gatsby';
-import { /* fullWidth, */ styleVars, breakpoint as bp } from '@lib/style';
-import Menu from '@components/Menu';
+import { /* fullWidth, */ styleVars, breakpoint as bp } from '$lib/style';
+import Menu from '$components/Menu';
 
 export const StyledNav: any = styled.nav`
   ${bp('small down')} {

@@ -8,7 +8,7 @@ import {
   CoverImg,
   CoverImgContainer,
 } from './EpisodeList.styles';
-import { BuzzsproutNode } from '@lib/types';
+import { BuzzsproutNode } from '$lib/types';
 
 export interface EpisodeProps {
   node: BuzzsproutNode;
@@ -43,11 +43,7 @@ const Episode: React.FC<EpisodeProps> = ({
           <StyledSubtitle>Episode {episode_number}</StyledSubtitle>
         </header>
         {summary ? <p>{summary}</p> : null}
-        <StyledAudio
-          //trackTitle={title}
-          streamUrl={audio_url}
-          // preloadType="auto"
-        />
+        <StyledAudio src={audio_url} />
       </StyledContentWrapper>
     </StyledEpisode>
   );

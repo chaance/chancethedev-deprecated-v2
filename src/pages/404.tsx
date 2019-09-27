@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
-import Layout from '@components/Layout';
-import SEO from '@components/SEO';
-import EpisodeList from '@components/EpisodeList';
+import Layout from '$components/Layout';
+import SEO from '$components/SEO';
+import EpisodeList from '$components/EpisodeList';
 
 function getRadomInt(min: number = 0, max: number): number {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -13,14 +13,15 @@ const NotFoundPage: React.FC<{ data: any }> = ({
     allBuzzsproutPodcastEpisode: { edges: episodes },
   },
 }) => {
-  const [randEpisode, setRandomEpisode] = useState(null);
+  const [randEpisode, setRandomEpisode] = useState<any>(null);
   useEffect(() => {
     const randIndex = getRadomInt(0, episodes.length - 1);
-    const randomEpisode = (episodes as any[]).find((x, index, arr) => {
+    const rand = (episodes as any[]).find((x, index, arr) => {
       return index === randIndex;
     });
-    setRandomEpisode(randomEpisode);
-  }, []);
+    setRandomEpisode(rand);
+  }, [episodes]);
+
   return (
     <Layout>
       <SEO title="404: Danger!" />

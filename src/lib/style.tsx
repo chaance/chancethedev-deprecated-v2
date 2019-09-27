@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
-import { ThemeProps } from '@lib/types';
-import { json2mq } from '@lib/utils';
-import { breakpoints as BREAKPOINTS } from '@lib/theme';
+import { ThemeProps } from '$lib/types';
+import { json2mq } from '$lib/utils';
+import { breakpoints as BREAKPOINTS } from '$lib/theme';
 
 // Get the computed font size from the doc root element
 // Handy for calculating ems in the browser.

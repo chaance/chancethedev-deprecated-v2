@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { fullWidth, styleVars } from '@lib/style';
+import { fullWidth, styleVars } from '$lib/style';
 
 export const Container = styled.div`
   ${fullWidth()};

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const siteUrl = 'https://chancethedev.com';
 
 module.exports = {
@@ -9,7 +10,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-typescript',
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-emotion',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
@@ -48,13 +48,6 @@ module.exports = {
           yandex: false,
           windows: false,
         },
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-nprogress',
-      options: {
-        color: '#f64861',
-        showSpinner: false,
       },
     },
     {
@@ -103,10 +96,6 @@ module.exports = {
         name: 'images',
         path: `${__dirname}/src/images`,
       },
-    },
-    {
-      resolve: 'gatsby-plugin-react-svg',
-      options: {},
     },
     'gatsby-plugin-remove-trailing-slashes',
     'gatsby-plugin-netlify',

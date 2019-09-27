@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import AudioPlayer from '@components/AudioPlayer';
-import { breakpoint as bp } from '@src/lib/style';
+import AudioPlayer from '$components/Audio';
+import { breakpoint as bp } from '$src/lib/style';
 
 export const StyledEpisode = styled.article`
   display: grid;
@@ -34,7 +34,7 @@ export const StyledTitle = styled.h2`
 
 export const StyledSubtitle = styled.h3`
   margin: 0;
-  color: ${({ theme }) => theme.grays.s500};
+  color: ${({ theme }: any) => theme.grays.s500};
 `;
 
 export const StyledAudio: any = styled(AudioPlayer)`

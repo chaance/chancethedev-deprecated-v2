@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { fullWidth, styleVars, breakpoint } from '@lib/style';
+import { fullWidth, styleVars, breakpoint } from '$lib/style';
 
 export const StyledFooter = styled.footer`
   ${fullWidth()};

@@ -2,9 +2,9 @@ import React from 'react';
 import { graphql } from 'gatsby';
 // import { Link } from 'gatsby';
 
-import Layout from '@components/Layout';
-import SEO from '@components/SEO';
-import EpisodeList from '@components/EpisodeList';
+import Layout from '$components/Layout';
+import SEO from '$components/SEO';
+import EpisodeList from '$components/EpisodeList';
 
 const IndexPage: React.FC<{ data: any }> = ({
   data: {
