@@ -1,5 +1,5 @@
 import React from 'react';
-import Helmet, { HelmetProps } from 'react-helmet';
+import Helmet, { HelmetProps } from '$components/Helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 export interface SEOProps {

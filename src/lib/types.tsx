@@ -1,11 +1,3 @@
-export {
-  ThemeBPProps,
-  ThemeBrandProps,
-  ThemeFontProps,
-  ThemeModeProps,
-  ThemeProps,
-} from '$lib/theme';
-
 export interface BuzzsproutNode {
   artist?: string;
   artwork_url?: string;

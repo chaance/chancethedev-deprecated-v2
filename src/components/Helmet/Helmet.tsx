@@ -10,9 +10,10 @@ import {
   warn,
 } from './utils';
 import { TAG_NAMES, VALID_TAG_NAMES } from './constants';
+import { HelmetProps, HelmetData } from './index';
 
-const Helmet = Component =>
-  class HelmetWrapper extends React.Component {
+function Helmet<T extends HelmetProps = HelmetProps>(Component: any) {
+  return class HelmetWrapper extends React.Component<HelmetProps> {
     /**
      * @param {Object} base: {"target": "_blank", "href": "http://mysite.com/"}
      * @param {Object} bodyAttributes: {"className": "root"}
@@ -57,13 +58,15 @@ const Helmet = Component =>
       encodeSpecialCharacters: true,
     };
 
+    static renderStatic: () => HelmetData;
+
     // Component.peek comes from react-side-effect:
     // For testing, you may use a static peek() method available on the returned component.
     // It lets you get the current state without resetting the mounted instance stack.
     // Don’t use it for anything other than testing.
-    static peek = Component.peek;
+    static peek: () => HelmetData = Component.peek;
 
-    static rewind = () => {
+    static rewind: () => HelmetData = () => {
       let mappedState = Component.rewind();
       if (!mappedState) {
         // provide fallback if mappedState is undefined
@@ -85,15 +88,15 @@ const Helmet = Component =>
       return mappedState;
     };
 
-    static set canUseDOM(canUseDOM) {
+    static set canUseDOM(canUseDOM: boolean) {
       Component.canUseDOM = canUseDOM;
     }
 
-    shouldComponentUpdate(nextProps) {
+    shouldComponentUpdate(nextProps: any) {
       return !isEqual(this.props, nextProps);
     }
 
-    mapNestedChildrenToProps(child, nestedChildren) {
+    mapNestedChildrenToProps(child: any, nestedChildren: any) {
       if (!nestedChildren) {
         return null;
       }
@@ -121,7 +124,7 @@ const Helmet = Component =>
       arrayTypeChildren,
       newChildProps,
       nestedChildren,
-    }) {
+    }: any) {
       return {
         ...arrayTypeChildren,
         [child.type]: [
@@ -134,7 +137,12 @@ const Helmet = Component =>
       };
     }
 
-    mapObjectTypeChildren({ child, newProps, newChildProps, nestedChildren }) {
+    mapObjectTypeChildren({
+      child,
+      newProps,
+      newChildProps,
+      nestedChildren,
+    }: any) {
       switch (child.type) {
         case TAG_NAMES.TITLE:
           return {
@@ -164,7 +172,7 @@ const Helmet = Component =>
       };
     }
 
-    mapArrayTypeChildrenToProps(arrayTypeChildren, newProps) {
+    mapArrayTypeChildrenToProps(arrayTypeChildren: any, newProps: any) {
       let newFlattenedProps = { ...newProps };
 
       Object.keys(arrayTypeChildren).forEach(arrayChildName => {
@@ -177,7 +185,7 @@ const Helmet = Component =>
       return newFlattenedProps;
     }
 
-    warnOnInvalidChildren(child, nestedChildren) {
+    warnOnInvalidChildren(child: any, nestedChildren: any) {
       if (process.env.NODE_ENV !== 'production') {
         if (!VALID_TAG_NAMES.some(name => child.type === name)) {
           if (typeof child.type === 'function') {
@@ -210,7 +218,7 @@ const Helmet = Component =>
       return true;
     }
 
-    mapChildrenToProps(children, newProps) {
+    mapChildrenToProps(children: any, newProps: any) {
       let arrayTypeChildren = {};
 
       React.Children.forEach(children, child => {
@@ -263,6 +271,7 @@ const Helmet = Component =>
       return <Component {...newProps} />;
     }
   };
+}
 
 const NullComponent = () => null;
 

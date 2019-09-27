@@ -19,7 +19,6 @@
     "baseUrl": "./",
     "paths": {
       "react-dom": ["@hot-loader/react-dom"],
-      "react-helmet": ["src/components/react-helmet"],
       "$src/*": ["src/*"],
       "$components/*": ["src/components/*"],
       "$images/*": ["src/images/*"],

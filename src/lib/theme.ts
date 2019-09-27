@@ -1,69 +1,5 @@
 import { lighten, darken } from 'polished';
 
-export interface ColorProps {
-  [key: string]: string | object | null | undefined;
-}
-
-export interface ThemeBrandProps {
-  primary: string;
-  primaryDark: string;
-  secondary: string;
-  secondaryDark: string;
-  white: string;
-  black: string;
-  [key: string]: string;
-}
-
-export interface ThemeFontProps {
-  primary: string;
-  sans?: string;
-  serif?: string;
-  cond?: string;
-  mono?: string;
-}
-
-export interface ThemeModeProps {
-  background: {
-    main: string;
-  };
-  text: {
-    main: string;
-  };
-  button: {
-    default: {
-      background: string;
-      backgroundHover?: string;
-      text: string;
-      textHover?: string;
-    };
-    primary: {
-      background: string;
-      backgroundHover?: string;
-      text: string;
-      textHover?: string;
-    };
-    secondary: {
-      background: string;
-      backgroundHover?: string;
-      text: string;
-      textHover?: string;
-    };
-  };
-}
-
-export interface ThemeBPProps {
-  [key: string]: number;
-}
-
-export interface ThemeProps extends ColorProps {
-  mode: 'light' | 'dark';
-  light: ThemeModeProps;
-  dark: ThemeModeProps;
-  brand: ThemeBrandProps;
-  fonts: ThemeFontProps;
-  breakpoints: ThemeBPProps;
-}
-
 export const black = '#363636';
 
 export const white = '#ffffff';
@@ -97,7 +33,7 @@ export const fonts: ThemeFontProps = {
   cond: fontCond,
 };
 
-export const brand = {
+export const brand: ThemeBrandProps = {
   primary: hotPink,
   primaryDark: darken(0.2, hotPink),
   secondary: limeGreen,
@@ -151,7 +87,7 @@ export const lightTheme: ThemeModeProps = {
   },
 };
 
-export const darkTheme: ThemeModeProps = {
+export const darkTheme: any = {
   background: {
     main: grays.s900,
   },
@@ -189,3 +125,73 @@ export const theme: ThemeProps = {
 };
 
 export default theme;
+
+// TYPES
+
+export interface ColorProps {
+  [key: string]: string | object | null | undefined;
+}
+
+export interface ThemeModeProps {
+  background: {
+    main: string;
+  };
+  text: {
+    main: string;
+  };
+  button: {
+    default: {
+      background: string;
+      backgroundHover?: string;
+      text: string;
+      textHover?: string;
+    };
+    primary: {
+      background: string;
+      backgroundHover?: string;
+      text: string;
+      textHover?: string;
+    };
+    secondary: {
+      background: string;
+      backgroundHover?: string;
+      text: string;
+      textHover?: string;
+    };
+  };
+}
+
+export interface ThemeBrandProps {
+  primary: string;
+  primaryDark: string;
+  secondary: string;
+  secondaryDark: string;
+  white: string;
+  black: string;
+  [key: string]: string;
+}
+
+export interface ThemeProps extends ColorProps {
+  mode: 'light' | 'dark';
+  light: ThemeModeProps;
+  dark: ThemeModeProps;
+  brand: ThemeBrandProps;
+  fonts: ThemeFontProps;
+  breakpoints: ThemeBPProps;
+}
+
+export interface ThemeFontProps {
+  primary: string;
+  sans?: string;
+  serif?: string;
+  cond?: string;
+  mono?: string;
+}
+
+export interface ThemeBPProps {
+  [key: string]: number;
+}
+
+export interface EmotionTheme extends ThemeProps {
+  mode: 'light' | 'dark';
+}

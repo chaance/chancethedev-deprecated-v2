@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
 import { ThemeContext } from '@emotion/core';
-import theme, { ThemeProps } from '../lib/theme';
+import theme from '../lib/theme';
 
 export const ThemeToggleContext = React.createContext({
   toggle: () => {},
@@ -28,9 +28,4 @@ export const ThemeProvider: React.FC = ({ children }) => {
 
 export default ThemeProvider;
 
-////////////////////////////////////////////////////////////////////////////////
 // TYPES
-////////////////////////////////////////////////////////////////////////////////
-export interface EmotionTheme extends ThemeProps {
-  mode: 'light' | 'dark';
-}
