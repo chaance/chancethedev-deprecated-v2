@@ -1,5 +1,5 @@
 import React from 'react';
-import Helmet from './src/components/Helmet';
+import Helmet from 'react-helmet';
 
 export const onRenderBody = ({
   setHeadComponents,

@@ -5,7 +5,7 @@ exports.onCreateWebpackConfig = ({ config, actions }) => {
     resolve: {
       alias: {
         'react-dom': '@hot-loader/react-dom',
-        'react-helmet': path.join(__dirname, './src/components/Helmet'),
+        'react-helmet': path.join(__dirname, './src/components/helmet'),
         $src: path.join(__dirname, './src'),
         $components: path.join(__dirname, './src/components'),
         $images: path.join(__dirname, './src/images'),

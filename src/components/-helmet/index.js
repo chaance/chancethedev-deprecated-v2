@@ -1,3 +1,3 @@
-import { Helmet } from './Helmet';
+import { Helmet } from './helmet';
 export { Helmet };
 export default Helmet;
