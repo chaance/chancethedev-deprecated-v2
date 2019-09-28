@@ -1,12 +1,10 @@
-import { Helmet } from './Helmet';
-export { Helmet };
-export default Helmet;
+import * as React from 'react';
 
-type LinkProps = JSX.IntrinsicElements['link'];
+export type LinkProps = JSX.IntrinsicElements['link'];
 
-type MetaProps = JSX.IntrinsicElements['meta'];
+export type MetaProps = JSX.IntrinsicElements['meta'];
 
-interface TagUpdates {
+export interface TagUpdates {
   baseTag: Array<any>;
   linkTags: Array<HTMLLinkElement>;
   metaTags: Array<HTMLMetaElement>;
@@ -38,6 +36,13 @@ export interface HelmetProps {
   titleTemplate?: string;
 }
 
+export class Helmet extends React.Component<HelmetProps> {
+  static peek(): HelmetData;
+  static rewind(): HelmetData;
+  static renderStatic(): HelmetData;
+  static canUseDOM: boolean;
+}
+
 export interface HelmetData {
   base: HelmetDatum;
   bodyAttributes: HelmetHTMLBodyDatum;
@@ -65,3 +70,9 @@ export interface HelmetHTMLElementDatum {
   toString(): string;
   toComponent(): React.HTMLAttributes<HTMLElement>;
 }
+
+export const peek: () => HelmetData;
+export const rewind: () => HelmetData;
+export const renderStatic: () => HelmetData;
+export const canUseDOM: boolean;
+export default Helmet;
